@@ -39,6 +39,9 @@ class Money(Protocol):
 	def MultiplyAndRound(self, multiplier: float) -> TrustedMoney:
 		pass
 
+	def __repr__(self):
+		return f'[{self.amount} {self.currencyIsoCode.name}]'
+
 
 # trustedMoney is hidden from the API surface to ensure that this type is trustworthy because it can only be created
 # through one of the named constructors (EUR() or USD()).

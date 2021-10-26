@@ -1,3 +1,4 @@
+import pytest
 from pytest import raises
 
 from money.money import Money
@@ -36,5 +37,19 @@ def test_UnverifiedDuration_invalid_input():
 def test_base_reservation_has_zero_cost():
 	MAX_BASE_RESERVATION_DURATION = 20
 	reservationDuration = MAX_BASE_RESERVATION_DURATION - 1
-	assert pricing_engine.CalculateReservationPrice(reservationDuration) == Money.EUR(0)
+	extendedReservationPricePerMinute = Money.EUR(2)
+	assert pricing_engine.CalculateReservationPrice(reservationDuration, extendedReservationPricePerMinute) == [Money.EUR(0),Money.EUR(0)]
 
+
+def test_extended_reservation_add_additional_cost():
+	#reservation = pricing_engine.ReservationPricingCofiguration()
+	MAX_BASE_RESERVATION_DURATION = 20
+	reservationDuration = MAX_BASE_RESERVATION_DURATION + 1
+	extendedReservationPricePerMinute = Money.EUR(2)
+	assert pricing_engine.CalculateReservationPrice(reservationDuration, extendedReservationPricePerMinute) == [Money.EUR(0),Money.EUR(2)]
+
+def test_extended_reservation_add_additional_cost1():
+	MAX_BASE_RESERVATION_DURATION = 20
+	reservationDuration = MAX_BASE_RESERVATION_DURATION + 2
+	extendedReservationPricePerMinute = Money.EUR(2)
+	assert pricing_engine.CalculateReservationPrice(reservationDuration, extendedReservationPricePerMinute) == [Money.EUR(0),Money.EUR(4)]
