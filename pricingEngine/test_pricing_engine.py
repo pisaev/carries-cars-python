@@ -9,7 +9,7 @@ def test_calculate_price_charged_per_minute():
 
 	duration = pricing_engine.DurationInMinutes(2)
 
-	assert pricing_engine.CalculatePrice(pricePerMinute, duration) == Money.EUR(60)
+	assert pricing_engine.CalculateRidePrice(pricePerMinute, duration) == Money.EUR(60)
 
 
 def test_duration_guards_against_zero_or_negative_duration():
@@ -31,3 +31,8 @@ def test_UnverifiedDuration_invalid_input():
 
 	with raises(expected_exception=ValueError, match="duration should be a positive number in minutes"):
 		unverifiedInput.Verify()
+
+
+def test_reservation():
+
+	pass

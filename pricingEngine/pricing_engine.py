@@ -40,5 +40,5 @@ class _duration(Duration):
 		return self._durationInMinutes
 
 
-def CalculatePrice(pricePerMinute: Money, duration: Duration) -> Money:
+def CalculateRidePrice(pricePerMinute: Money, duration: Duration) -> Money:
 	return pricePerMinute.MultiplyAndRound(float(duration.DurationInMinutes()))
