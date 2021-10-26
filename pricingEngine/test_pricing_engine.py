@@ -33,6 +33,8 @@ def test_UnverifiedDuration_invalid_input():
 		unverifiedInput.Verify()
 
 
-def test_reservation():
+def test_base_reservation_has_zero_cost():
+	MAX_BASE_RESERVATION_DURATION = 20
+	reservationDuration = MAX_BASE_RESERVATION_DURATION - 1
+	assert pricing_engine.CalculateReservationPrice(reservationDuration) == Money.EUR(0)
 
-	pass

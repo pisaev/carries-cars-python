@@ -42,3 +42,7 @@ class _duration(Duration):
 
 def CalculateRidePrice(pricePerMinute: Money, duration: Duration) -> Money:
 	return pricePerMinute.MultiplyAndRound(float(duration.DurationInMinutes()))
+
+
+def CalculateReservationPrice(reservationDuration):
+	return Money.EUR(0)
